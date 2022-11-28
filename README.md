@@ -152,6 +152,31 @@ Bcrypt Algoithm is One way encryption technique
 
 <br><br>
 	
+<h2>Spring Security's jdbc Implementation:</h2>
+<br><br>
+<h3>Security Configuration:</h3>
+	
+	
+	 @Bean
+	    public DataSource dataSource() {
+	        return new EmbeddedDatabaseBuilder()
+	            .setType(EmbeddedDatabaseType.H2)
+	            .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
+	            .build();
+	    }
+
+	    @Bean
+	    public UserDetailsManager users(DataSource dataSource) {
+	        UserDetails user = User.withUsername("user")
+	        					   .password("password")
+	        					   .roles("USER")
+	        					   .build();
+	        
+	        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
+	        users.createUser(user);
+	        return users;
+	    }
+	
 <h2>Creating Project:</h2>
 <br><br>
 <b> Issue #1 </b>
