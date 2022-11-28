@@ -1,5 +1,20 @@
 # Spring_Security
 
+<h1>Topics</h1>
+<i>
+<ol>
+<li> Spring Config with JAVA</li>
+<li> Spring Security Config (Default Login and logout)</li>
+<li> Spring Security Config (Custom Login)</li>
+<li> Spring Security Config (Custom Login) with error param check</li>
+<li> Spring Security Config (Custom Bootstrap Login)</li>
+<li> Spring Security Config (Custom Bootstrap Login) with CSRF</li>
+<li> Spring Security Config : user role disply in jsp</li>
+<li> Spring Security Config : Restrict Access Based On Roles </li>
+<li> Spring Security JDBC </li>
+<li> Spring SecurityJDBC with Password Encryption(Bcrypt hashing)</li>
+</ol>
+</i>
 <h2>Notes:</h2>
 
 <h3 style="color='red';">Dependencies Needed: </h3>
