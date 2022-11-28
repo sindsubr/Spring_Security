@@ -15,22 +15,21 @@ public class SpringWebMvcSecurityConfiguration{
 
 	@Bean
 	public InMemoryUserDetailsManager userDetailsService() {
-		UserDetails user1 = User.withUsername("jhon").password("{noop}test@123").roles("employee")
+		UserDetails user1 = User.withUsername("jhon").password("{bcrypt}$2y$10$ToYCY/HPBlaE4Gx1/UEh2eGpPdWmJuhIQrUdYOdDw8uPYZ7I8Hhva").roles("employee")
 				.build();
-		UserDetails user2 = User.withUsername("mary").password("{noop}test@123").roles("manager")
+		UserDetails user2 = User.withUsername("mary").password("{bcrypt}$2y$10$ToYCY/HPBlaE4Gx1/UEh2eGpPdWmJuhIQrUdYOdDw8uPYZ7I8Hhva").roles("manager")
 				.build();
-		UserDetails user3 = User.withUsername("sam").password("{noop}test@123").roles("admin")
+		UserDetails user3 = User.withUsername("sam").password("{bcrypt}$2y$10$ToYCY/HPBlaE4Gx1/UEh2eGpPdWmJuhIQrUdYOdDw8uPYZ7I8Hhva").roles("admin")
 				.build();
 		return new InMemoryUserDetailsManager(user1, user2, user3);
 	}
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
 		http.authorizeRequests()
-//		.anyRequest().authenticated()
 		.antMatchers("/showAdmin").hasAnyRole("admin")
 		.antMatchers("/showLeader").hasAnyRole("manager")
+		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/showLoginForm")
 		.loginProcessingUrl("/authenticateTheUser")
 		.permitAll()
