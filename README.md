@@ -10,6 +10,7 @@
 <li> Spring Security Config (Custom Bootstrap Login)</li>
 <li> Spring Security Config (Custom Bootstrap Login) with CSRF</li>
 <li> Spring Security Config : user role disply in jsp</li>
+<li> Spring Security Config : Access Denied Page </li>
 <li> Spring Security Config : Restrict Access Based On Roles </li>
 <li> Spring Security JDBC </li>
 <li> Spring SecurityJDBC with Password Encryption(Bcrypt hashing)</li>
@@ -78,19 +79,43 @@ Implement logout function using logout param just create a button logout within 
 
 <h3> custom-logic.jsp</h3><br>
 You have to create custom login form with error param checking<br>
+	
 <code>
 <%@page isELIgnored = "false" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %></code>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 	<c:if test = "${param.error!=null }">
 		<i class="error"> Bad Credentials</i>
 	</c:if>
-
+	</code>
+	
 <br><br>
 
+<h2>Spring Security Config (Custom Bootstrap Login) with CSRF</h2>
+<br><br>
+<h3>Custom-bootstrap-login</h3>
+<b>Note:</b>The <code> <form:form> </code>tag automagically implements csrf token code
+	
+	<code>
+		<!-- CSRF token assignment for form tag in Spring Security Framework -->
+		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
+	</code>
 
+<br><br>
+	
+<h2>User Role Display in JSP</h2>
+<br><br>
+<h3>main.jsp</h3>
+	
 
+<code>	
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+	
+<security:authentication property = "principal.username"></security:authentication>
+<security:authentication property = "principal.authorities"></security:authentication>
+</code>
+	
 <h2>Creating Project:</h2>
 <br><br>
 <b> Issue #1 </b>
