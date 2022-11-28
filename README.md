@@ -137,3 +137,15 @@ The superclass <i>"javax.servlet.http.HttpServlet"</i>, determined from the Dyna
  
  <b> Solution #1: </b>
  Add javax.servlet-api in pom.xml -> update maven and build project
+
+<b> Issue #2 </b>
+Tomcat server already in use:
+<b>Answer:</b>
+For Windows
+
+Step 1: Find the process id
+
+netstat -ano | findstr 8080
+Step 2: Open command prompt as administrator and kill the process
+
+taskkill /F /pid 1088
