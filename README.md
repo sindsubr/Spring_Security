@@ -95,12 +95,13 @@ You have to create custom login form with error param checking<br>
 <h2>Spring Security Config (Custom Bootstrap Login) with CSRF</h2>
 <br><br>
 <h3>Custom-bootstrap-login</h3>
-<b>Note:</b>The <code> <form:form> </code>tag automagically implements csrf token code
+
+<b>Note:</b>The form:form tag automagically implements csrf token code
 	
-	<code>
+	
 		<!-- CSRF token assignment for form tag in Spring Security Framework -->
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
-	</code>
+	
 
 <br><br>
 	
@@ -110,10 +111,21 @@ You have to create custom login form with error param checking<br>
 	
 
 <code>	
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+	<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 	
-<security:authentication property = "principal.username"></security:authentication>
-<security:authentication property = "principal.authorities"></security:authentication>
+	<security:authentication property = "principal.username"></security:authentication>
+	<security:authentication property = "principal.authorities"></security:authentication>
+</code>
+	
+<h2>Link displayed based on user Role</h2>
+<br><br>
+<h3>main.jsp</h3>
+
+
+<code>	
+	<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+	
+	<security:authorize access="hasRole('manager')">href code</security:authorize>
 </code>
 	
 <h2>Creating Project:</h2>
