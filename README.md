@@ -105,6 +105,7 @@ You have to create custom login form with error param checking<br>
 
 <br><br>
 	
+
 <h2>User Role Display in JSP</h2>
 <br><br>
 <h3>main.jsp</h3>
@@ -127,6 +128,29 @@ You have to create custom login form with error param checking<br>
 	
 	<security:authorize access="hasRole('manager')">href code</security:authorize>
 </code>
+	
+<br><br>
+	
+<h2>Spring Security with Password Encryption(Bcrypt hashing)</h2>
+<br><br>
+Bcrypt Algoithm is One way encryption technique
+	
+<br>
+	<a href="https://bcrypt.online/">bcrypt plain text online</a>
+<br><br>
+
+<h3>Password Save:<br></h3>
+	<ol><li>
+		Encrypt with salt while saving
+		</li></ol>
+<h3>Password Verification<br></h3>
+	<ol>
+		<li>Extract hash and salt from encrypted password from db<br></li>
+		<li>With the extracted salt and hash,Encrypt the user entered password<br></li>
+		<li>Compare results<br></li>
+	</ol>
+
+<br><br>
 	
 <h2>Creating Project:</h2>
 <br><br>
