@@ -44,7 +44,9 @@
 <li>javax.security-web</li>
 <li>javax.security-config</li>
 <li>javax.security-taglibs</li>
-
+<b>For Datasource db connectivity</b>
+<li>c3p0 from mchange</li>
+<li>sql-connector-java</li>
 </ol>
 For recent Spring update,<br>
 <a href="https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter">spring-security-without-the-websecurityconfigureradapter</a>
