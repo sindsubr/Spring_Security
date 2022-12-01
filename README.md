@@ -16,6 +16,22 @@
 <li> Spring SecurityJDBC with Password Encryption(Bcrypt hashing)</li>
 </ol>
 </i>
+
+
+<h2>Compatable Versions</h2>
+<b>
+<i>Spring : Spring Security</i><br>
+<br> 5.0.3 -> 5.0.1
+<br> 5.0.6 -> 5.0.5
+<br> 5.0.7 -> 5.0.8
+<br> 5.1.0 -> 5.1.0
+<br> 5.1.3 -> 5.1.2
+<br> 5.2.8 -> 5.4.0
+<br> 5.3.8 ->5.5.1
+<br> 5.3.13 -> 5.6.0
+<br> 5.3.22 -> 5.7.3
+</b>
+
 <h2>Notes:</h2>
 
 <h3 style="color='red';">Dependencies Needed: </h3>
