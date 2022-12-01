@@ -151,31 +151,38 @@ Bcrypt Algoithm is One way encryption technique
 	</ol>
 
 <br><br>
+<b>Spring security validates password technique by seeing its {id}<br><br>
+Eg:<br><br>
+{noop}password<br><br>
+{bcrypt}password</b><br><br>
+
 	
 <h2>Spring Security's jdbc Implementation:</h2>
 <br><br>
 <h3>Security Configuration:</h3>
 	
 	
-	 @Bean
-	    public DataSource dataSource() {
-	        return new EmbeddedDatabaseBuilder()
-	            .setType(EmbeddedDatabaseType.H2)
-	            .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
-	            .build();
-	    }
+	@Autowired
+	private DataSource securityDataSource;
+	
+	@Bean
+	public UserDetailsManager userDetailsManager() {
+		return new JdbcUserDetailsManager(securityDataSource);
+	}
 
-	    @Bean
-	    public UserDetailsManager users(DataSource dataSource) {
-	        UserDetails user = User.withUsername("user")
-	        					   .password("password")
-	        					   .roles("USER")
-	        					   .build();
-	        
-	        JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-	        users.createUser(user);
-	        return users;
-	    }
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+		.antMatchers("/showAdmin").hasRole("ADMIN")
+		.antMatchers("/showLeader").hasRole("MANAGER")
+		.anyRequest().authenticated()
+		.and().formLogin().loginPage("/showLoginForm")
+				.loginProcessingUrl("/authenticateTheUser")
+				.permitAll()
+				.and().exceptionHandling()
+				.accessDeniedPage("/access-denied");
+		return http.build();
+	}
 	
 <h2>Creating Project:</h2>
 <br><br>
